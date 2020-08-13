@@ -1,0 +1,5 @@
+YOLOV5:
+  WEIGHT: "detector/YOLOv5/weights/yolov5s.pt"
+  SCORE_THRESH: 0.4
+  NMS_THRESH: 0.3
+  IMG_SIZE: 640
