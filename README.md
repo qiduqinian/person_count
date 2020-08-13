@@ -21,3 +21,5 @@ put the People_sample_2.mp4 in data/People_sample_2.mp4
 ```bash
 $ python person_count.py
 ```
+
+Fps: 50 on GeForce GTX 1080 Ti, 0.02s per frame

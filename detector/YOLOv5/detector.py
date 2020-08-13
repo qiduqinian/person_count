@@ -46,6 +46,7 @@ class YOLOv5(object):
         img = torch.zeros((1, 3, self.imgsz, self.imgsz), device=self.device)
         self.conf_thres = conf_thresh
         self.iou_thres = nms_thresh
+        half = False
         _ = self.model(img.half() if half else img) if self.device.type != 'cpu' else None  # run once
 
     def __call__(self, img, im0s, path=""):
@@ -71,16 +72,8 @@ class YOLOv5(object):
             if det is not None and len(det):
                 # Rescale boxes from img_size to im0 size
                 det[:, :4] = scale_coords(img.shape[2:], det[:, :4], im0.shape).round()
+        print('%s Time: (%.3fs)' % (s, t2 - t1))
         return det
-                #bbox = det[:, :4]
-                #bbox = xyxy_to_xywh_cut(bbox)
-                #cls_conf = det[:, 4]
-               # cls_ids = det[:, 5].long()
-           # else:
-             #   bbox = torch.FloatTensor([]).reshape([0, 4])
-             #   cls_conf = torch.FloatTensor([])
-          #     cls_ids = torch.LongTensor([])
-       # return bbox.numpy(), cls_conf.numpy(), cls_ids.numpy()
                 
 
 
